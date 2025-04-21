@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 11:53:06 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/21 17:18:13 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:21:32 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void Harl::complain(const std::string &levelType)
 		break;
 	default:
 		std::cout << "Default message" << std::endl;
-		break;
 	}
 }
 
