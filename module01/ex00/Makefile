@@ -6,12 +6,12 @@
 #    By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 12:14:49 by smoore-a          #+#    #+#              #
-#    Updated: 2025/04/18 13:06:05 by smoore-a         ###   ########.fr        #
+#    Updated: 2025/04/21 12:08:04 by smoore-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
-CXX = c++
+CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 # Program name
