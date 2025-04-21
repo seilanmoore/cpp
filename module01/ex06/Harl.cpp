@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 11:53:06 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/20 20:06:17 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:18:13 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ Harl::~Harl(void)
 
 static int getLevel(const std::string &levelType)
 {
-	if (levelType == "DEBUG")
-		return 0;
-	else if (levelType == "INFO")
-		return 1;
-	else if (levelType == "WARNING")
-		return 2;
-	else if (levelType == "ERROR")
-		return 3;
+	const std::string level[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (level[i] == levelType)
+			return i;
+	}
 	return -1;
 }
 
