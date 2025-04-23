@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:52:17 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/18 22:23:54 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:55:06 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Weapon::~Weapon(void)
 {
 }
 
-std::string Weapon::getType(void) const
+const std::string &Weapon::getType(void) const
 {
 	return this->_type;
 }
