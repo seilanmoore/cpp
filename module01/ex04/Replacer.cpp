@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:54:27 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/20 11:31:48 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:34:41 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ int Replacer::seekReplace(void)
 			line.insert(index, this->_str_2);
 			index = line.find(this->_str_1, index + this->_str_2.length());
 		}
+		this->_out_file << line;
 		if (!_in_file.eof())
-			this->_out_file << line << std::endl;
+			this->_out_file << std::endl;
 	}
 	return 0;
 }
