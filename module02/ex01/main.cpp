@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:08 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/25 17:18:04 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:37:39 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 int main(void)
 {
+	{
+		Fixed a(1.7f);
+		float b = 1.69921875;
+
+		std::cout << "a raw bits are " << a.getRawBits() << std::endl;
+		std::cout << "a is " << a << std::endl;
+		std::cout << "float is " << 1.69921875 << std::endl;
+		std::cout << "b is " << b << std::endl;
+		return 0;
+	}
 	Fixed a;
 	Fixed const b(10);
 	Fixed const c(42.42f);

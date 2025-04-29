@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:45 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/26 22:04:49 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:39:48 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void Fixed::setRawBits(const int raw)
 	_value = raw;
 }
 
-const int Fixed::_fractBits = 8;
-
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
 	os << fixed.toFloat();
 	return os;
 }
+
+const int Fixed::_fractBits = 8;
