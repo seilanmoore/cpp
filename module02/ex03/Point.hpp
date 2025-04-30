@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:51 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/27 13:55:11 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:51:23 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ public:
 	Fixed getX(void) const;
 	Fixed getY(void) const;
 
-	private : const Fixed _x;
+private:
+	const Fixed _x;
 	const Fixed _y;
 };
 

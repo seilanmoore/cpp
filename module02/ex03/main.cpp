@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:08 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/28 09:46:11 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:56:42 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int main(void)
 	test_bsp(a, b, c, Point(1.0f, 1.0f), true);
 	test_bsp(a, b, c, Point(2.0f, 2.0f), true);
 	test_bsp(a, b, c, Point(0.5f, 0.5f), true);
+	test_bsp(a, b, c, Point(2.0f, 0.1f), true);
 
 	// Test points outside the triangle
 	test_bsp(a, b, c, Point(6.0f, 6.0f), false);
