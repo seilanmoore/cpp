@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:51 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/26 22:20:22 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/01 07:56:18 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ public:
 	Fixed operator-(const Fixed &other) const;
 	Fixed operator*(const Fixed &other) const;
 	Fixed operator/(const Fixed &other) const;
-	Fixed &operator++();
+	Fixed &operator++(void);
 	Fixed operator++(int);
-	Fixed &operator--();
+	Fixed &operator--(void);
 	Fixed operator--(int);
 	~Fixed(void);
 
