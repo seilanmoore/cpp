@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:15:45 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/04/28 09:20:51 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/01 07:59:40 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ Fixed Fixed::operator/(const Fixed &other) const
 	return result;
 }
 
-Fixed &Fixed::operator++()
+Fixed &Fixed::operator++(void)
 {
 	_value += 1;
 	return *this;
@@ -147,7 +147,7 @@ Fixed Fixed::operator++(int)
 	return temp;
 }
 
-Fixed &Fixed::operator--()
+Fixed &Fixed::operator--(void)
 {
 	_value -= 1;
 	return *this;
