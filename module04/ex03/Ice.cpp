@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 11:22:20 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/11 17:56:05 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/12 23:04:00 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ Ice::Ice(const Ice &other) : AMateria(other)
 
 Ice &Ice::operator=(const Ice &other)
 {
-	(void)other;
+	if (this == &other)
+		return *this;
+	AMateria::operator=(other);
+	std::cerr << "Ice assignment operator called" << std::endl;
 	return *this;
 }
 

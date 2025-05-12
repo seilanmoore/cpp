@@ -6,13 +6,13 @@
 #    By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 12:14:49 by smoore-a          #+#    #+#              #
-#    Updated: 2025/05/10 14:29:50 by smoore-a         ###   ########.fr        #
+#    Updated: 2025/05/12 23:36:35 by smoore-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 # Program name
 NAME = simulation

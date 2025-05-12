@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:38:50 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/11 17:54:24 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:58:59 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ class ICharacter;
 class AMateria
 {
 public:
+	AMateria(void);
 	AMateria(std::string const &type);
+	AMateria(const AMateria &other);
+	AMateria &operator=(const AMateria &other);
 	virtual ~AMateria(void);
 
 	const std::string &getType(void) const;
@@ -30,11 +33,6 @@ public:
 
 protected:
 	std::string _type;
-	AMateria(const AMateria &other);
-
-private:
-	AMateria(void);
-	AMateria &operator=(const AMateria &other);
 };
 
 #endif

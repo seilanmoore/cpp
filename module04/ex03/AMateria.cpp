@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 11:25:28 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/11 17:55:16 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/12 23:00:55 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ AMateria::AMateria(const AMateria &other) : _type(other._type)
 
 AMateria &AMateria::operator=(const AMateria &other)
 {
-	(void)other;
+	if (this == &other)
+		return *this;
+	std::cerr << "AMateria assignment operator called" << std::endl;
+	_type = other._type;
 	return *this;
 }
 
