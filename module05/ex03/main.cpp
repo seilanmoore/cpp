@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:01 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 18:07:16 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/18 22:07:03 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ int main()
 	std::cout << "--------------------------------" << std::endl;
 	{
 		Intern some;
-		AForm *rrf;
-		rrf = some.makeForm("ShrubberyCreationForm", "home");
-		if (!rrf)
-			return 1;
+		AForm *rrf = NULL;
 		try
 		{
+			rrf = some.makeForm("ShrubberyCreationForm", "home");
 			Bureaucrat signer("signer", 145);
 			Bureaucrat executor("executor", 137);
 
@@ -52,12 +50,10 @@ int main()
 	std::cout << "-----------------------------" << std::endl;
 	{
 		Intern some;
-		AForm *ppf;
-		ppf = some.makeForm("PresidentialPardonForm", "Trump");
-		if (!ppf)
-			return 1;
+		AForm *ppf = NULL;
 		try
 		{
+			ppf = some.makeForm("PresidentialPardonForm", "Trump");
 			Bureaucrat signer("signer", 25);
 			Bureaucrat executor("executor", 5);
 
@@ -82,12 +78,10 @@ int main()
 	std::cout << "-----------------------------" << std::endl;
 	{
 		Intern some;
-		AForm *ppf;
-		ppf = some.makeForm("NoForm", "NoTarget");
-		if (!ppf)
-			return 1;
+		AForm *ppf = NULL;
 		try
 		{
+			ppf = some.makeForm("NoForm", "NoTarget");
 			Bureaucrat signer("signer", 25);
 			Bureaucrat executor("executor", 5);
 

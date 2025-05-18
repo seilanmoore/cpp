@@ -6,10 +6,11 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:51:51 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 17:49:08 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/18 22:44:16 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -29,9 +30,8 @@ Intern::Intern(const Intern &other)
 
 Intern &Intern::operator=(const Intern &other)
 {
+	(void)other;
 	std::cerr << "Intern assignment operator called" << std::endl;
-	if (this == &other)
-		return *this;
 	return *this;
 }
 
@@ -40,46 +40,37 @@ Intern::~Intern()
 	std::cerr << "Intern destructor called" << std::endl;
 }
 
-static int getFormType(const std::string &form)
-{
-	const std::string formType[3] = {
-		"ShrubberyCreationForm",
-		"RobotomyRequestForm",
-		"PresidentialPardonForm"};
-
-	for (int i = 0; i < 3; i++)
-	{
-		if (form == formType[i])
-			return i;
-	}
-	return -1;
-}
+const Intern::FormCreatorEntry Intern::_formCreators[] = {
+	{"ShrubberyCreationForm", &Intern::_createShrubberyCreationForm},
+	{"RobotomyRequestForm", &Intern::_createRobotomyRequestForm},
+	{"PresidentialPardonForm", &Intern::_createPresidentialPardonForm}};
 
 AForm *Intern::makeForm(
-	const std::string &form, const std::string &target) const
+	const std::string &formName, const std::string &formTarget)
 {
-	switch (getFormType(form))
+	const int numForm = sizeof(_formCreators) / sizeof(_formCreators[0]);
+	for (int i = 0; i < numForm; ++i)
 	{
-	case 0:
-	{
-		std::cout << "Intern creates " << form << "." << std::endl;
-		return new ShrubberyCreationForm(target);
+		if (formName == _formCreators[i].nameToMatch)
+		{
+			std::cout << "Intern creates " << formName << std::endl;
+			return (this->*_formCreators[i].creatorMethod)(formTarget);
+		}
 	}
-	case 1:
-	{
-		std::cout << "Intern creates " << form << "." << std::endl;
-		return new RobotomyRequestForm(target);
-	}
-	case 2:
-	{
-		std::cout << "Intern creates " << form << "." << std::endl;
-		return new PresidentialPardonForm(target);
-	}
-	default:
-	{
-		std::cout << "Intern could not create "
-				  << form << "." << std::endl;
-		return NULL;
-	}
-	}
+	throw InternCreateException();
+}
+
+AForm *Intern::_createRobotomyRequestForm(const std::string &target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+AForm *Intern::_createShrubberyCreationForm(const std::string &target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm *Intern::_createPresidentialPardonForm(const std::string &target)
+{
+	return new PresidentialPardonForm(target);
 }
