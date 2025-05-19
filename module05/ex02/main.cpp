@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:01 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 16:39:50 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:16:01 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void shrubberyTest()
 	std::cout << "SHRUBBERY SUCCESSFUL TEST" << std::endl;
 	std::cout << "-------------------------" << std::endl;
 	{
-		AForm *shrubbery;
+		AForm *shrubbery = NULL;
 		try
 		{
 			Bureaucrat signer("signer", 145);
 			Bureaucrat executor("executor", 137);
-
 			shrubbery = new ShrubberyCreationForm("home");
+
 			std::cout << signer << std::endl;
 			std::cout << *shrubbery << std::endl;
 			signer.signForm(*shrubbery);
@@ -52,13 +52,13 @@ void shrubberyTest()
 	std::cout << "SHRUBBERY LOW EXECUTOR GRADE TEST" << std::endl;
 	std::cout << "-------------------------------" << std::endl;
 	{
-		AForm *shrubbery;
+		AForm *shrubbery = NULL;
 		try
 		{
 			Bureaucrat signer("signer", 145);
 			Bureaucrat executor("executor", 138);
-
 			shrubbery = new ShrubberyCreationForm("home");
+
 			std::cout << signer << std::endl;
 			std::cout << *shrubbery << std::endl;
 			signer.signForm(*shrubbery);
@@ -79,13 +79,13 @@ void shrubberyTest()
 	std::cout << "SHRUBBERY LOW SIGNER GRADE TEST" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
 	{
-		AForm *shrubbery;
+		AForm *shrubbery = NULL;
 		try
 		{
 			Bureaucrat signer("signer", 146);
 			Bureaucrat executor("executor", 137);
-
 			shrubbery = new ShrubberyCreationForm("home");
+
 			std::cout << signer << std::endl;
 			std::cout << *shrubbery << std::endl;
 			signer.signForm(*shrubbery);
@@ -112,13 +112,13 @@ void robotomyTest()
 		std::cout << "ROBOTOMY SUCCESSFUL TEST" << std::endl;
 		std::cout << "-------------------------" << std::endl;
 		{
-			AForm *robotomy;
+			AForm *robotomy = NULL;
 			try
 			{
 				Bureaucrat signer("signer", 72);
 				Bureaucrat executor("executor", 45);
-
 				robotomy = new RobotomyRequestForm("Timmy");
+
 				std::cout << signer << std::endl;
 				std::cout << *robotomy << std::endl;
 				signer.signForm(*robotomy);
@@ -143,7 +143,7 @@ void presidentTest()
 	std::cout << "PRESIDENT SUCCESSFUL TEST" << std::endl;
 	std::cout << "-------------------------" << std::endl;
 	{
-		AForm *pardon;
+		AForm *pardon = NULL;
 		try
 		{
 			Bureaucrat signer("signer", 25);
