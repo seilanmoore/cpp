@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:45:17 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 15:41:52 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:25:51 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,32 +80,17 @@ int Form::getExecuteGrade() const
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (_signed)
-	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << _name
-				  << " because is already signed." << std::endl;
 		throw AlreadySignedException();
-	}
 	if (bureaucrat.getGrade() > _signGrade)
-	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << _name
-				  << " because its grade is too low." << std::endl;
 		throw GradeTooLowException();
-	}
 	_signed = true;
-	std::cout << bureaucrat.getName() << " signed "
-			  << _name << "." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form)
 {
-	os << "Form " << form.getName() << ": " << std::endl;
-	if (form.getSigned())
-		os << " - Form is signed." << std::endl;
-	else
-		os << " - Form is not signed." << std::endl;
-	os << " - Form grade required to sign: "
-	   << form.getSignGrade() << "." << std::endl;
-	os << " - Form grade required to execute: "
-	   << form.getExecuteGrade() << ".";
+	os << "Form " << form.getName() << ": "
+	   << (form.getSigned() ? "signed" : "not signed") << ", "
+	   << "sign(" << form.getSignGrade() << "), "
+	   << "execute(" << form.getExecuteGrade() << ").";
 	return os;
 }

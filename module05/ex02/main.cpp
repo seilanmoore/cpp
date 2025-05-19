@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:01 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 11:16:01 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:48:57 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,7 @@ void shrubberyTest()
 
 void robotomyTest()
 {
-	srand(static_cast<unsigned int>(time(0)));
-	for (int i = 10; i >= 0; --i)
+	for (int i = 10; i > 0; --i)
 	{
 		std::cout << "\n";
 		std::cout << "ROBOTOMY SUCCESSFUL TEST" << std::endl;
@@ -142,29 +141,28 @@ void presidentTest()
 	std::cout << "\n";
 	std::cout << "PRESIDENT SUCCESSFUL TEST" << std::endl;
 	std::cout << "-------------------------" << std::endl;
-	{
-		AForm *pardon = NULL;
-		try
-		{
-			Bureaucrat signer("signer", 25);
-			Bureaucrat executor("executor", 5);
-			pardon = new PresidentialPardonForm("Trump");
 
-			std::cout << signer << std::endl;
-			std::cout << *pardon << std::endl;
-			signer.signForm(*pardon);
-			std::cout << executor << std::endl;
-			std::cout << *pardon << std::endl;
-			executor.executeForm(*pardon);
-			delete pardon;
-			pardon = NULL;
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << "[Exception] " << e.what() << std::endl;
-		}
+	AForm *pardon = NULL;
+	try
+	{
+		Bureaucrat signer("signer", 25);
+		Bureaucrat executor("executor", 5);
+		pardon = new PresidentialPardonForm("Trump");
+
+		std::cout << signer << std::endl;
+		std::cout << *pardon << std::endl;
+		signer.signForm(*pardon);
+		std::cout << executor << std::endl;
+		std::cout << *pardon << std::endl;
+		executor.executeForm(*pardon);
 		delete pardon;
+		pardon = NULL;
 	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "[Exception] " << e.what() << std::endl;
+	}
+	delete pardon;
 }
 
 int main()

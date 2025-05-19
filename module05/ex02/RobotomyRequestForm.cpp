@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 10:48:43 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 16:19:45 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:54:12 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,21 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cerr << "RobotomyRequestForm destructor called" << std::endl;
 }
 
+bool RobotomyRequestForm::_seeded = false;
+
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (!getSigned())
-		throw FormNotSignedException();
+		throw NotSignedException();
 	if (executor.getGrade() > getExecuteGrade())
 		throw GradeTooLowException();
+	if (!RobotomyRequestForm::_seeded)
+	{
+		RobotomyRequestForm::_seeded = true;
+		std::srand(std::time(0));
+	}
 	std::cout << "* some drilling noises *" << std::endl;
-	if (rand() % 2)
+	if (std::rand() % 2)
 		std::cout << _target << " escaped." << std::endl;
 	else
 	{

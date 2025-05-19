@@ -6,12 +6,12 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:44:41 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 15:30:22 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:36:48 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_FORM_HPP
-#define A_FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 
@@ -35,57 +35,49 @@ public:
 
 	virtual void execute(Bureaucrat const &executor) const = 0;
 
-	class AFormException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "AForm exception";
+			return "Form grade is too high";
 		}
 	};
 
-	class GradeTooHighException : public AFormException
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "AForm: grade too high";
+			return "Form grade requirement not met or "
+				   "grade out of bounds (too low)";
 		}
 	};
 
-	class GradeTooLowException : public AFormException
+	class AlreadySignedException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "AForm: grade too low";
+			return "Form is already signed";
 		}
 	};
 
-	class AlreadySignedException : public AFormException
+	class NotSignedException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Form: already signed";
+			return "Form is not signed";
 		}
 	};
 
-	class FormNotSignedException : public AFormException
+	class FileException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "AForm: form not signed";
-		}
-	};
-
-	class FileException : public AFormException
-	{
-	public:
-		virtual const char *what() const throw()
-		{
-			return "AForm: error handling file";
+			return "Form error handling file";
 		}
 	};
 

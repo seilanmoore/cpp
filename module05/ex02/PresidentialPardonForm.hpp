@@ -6,12 +6,12 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 11:00:17 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 11:01:01 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:31:25 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIAL_PARDON_FORM_HPP
-#define PRESIDENTIAL_PARDON_FORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 

@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:01 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/17 19:59:38 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:04:21 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
 		Form lowGrade("lowGrade", 151, 1);
 		std::cout << lowGrade << std::endl;
 	}
-	catch (const Form::FormException &e)
+	catch (const std::exception &e)
 	{
 		std::cerr << "[Exception] " << e.what() << std::endl;
 	}
@@ -50,7 +50,7 @@ int main()
 		Form lowGrade("lowGrade", 1, 151);
 		std::cout << lowGrade << std::endl;
 	}
-	catch (const Form::FormException &e)
+	catch (const std::exception &e)
 	{
 		std::cerr << "[Exception] " << e.what() << std::endl;
 	}

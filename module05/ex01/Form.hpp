@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:44:41 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 15:23:02 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:11:05 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,31 @@ public:
 
 	void beSigned(const Bureaucrat &bureaucrat);
 
-	class FormException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Form exception";
+			return "Form grade is too high";
 		}
 	};
 
-	class GradeTooHighException : public FormException
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Form: grade too high";
+			return "Form grade requirement not met or "
+				   "grade out of bounds (too low)";
 		}
 	};
 
-	class GradeTooLowException : public FormException
+	class AlreadySignedException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Form: grade too low";
-		}
-	};
-
-	class AlreadySignedException : public FormException
-	{
-	public:
-		virtual const char *what() const throw()
-		{
-			return "Form: already signed";
+			return "Form is already signed";
 		}
 	};
 

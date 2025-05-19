@@ -6,11 +6,12 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 12:55:43 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 16:41:24 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:37:25 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("<name>"), _grade(150)
 {
@@ -78,10 +79,13 @@ void Bureaucrat::signForm(AForm &form) const
 	try
 	{
 		form.beSigned(*this);
+		std::cout << _name << " signed "
+				  << form.getName() << "." << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << "[Exception] " << e.what() << std::endl;
+		std::cout << _name << " couldn't sign " << form.getName()
+				  << " because " << e.what() << std::endl;
 	}
 }
 

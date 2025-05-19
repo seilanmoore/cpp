@@ -6,12 +6,12 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 10:50:23 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 10:54:39 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:32:08 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMY_REQUEST_FORM_HPP
-#define ROBOTOMY_REQUEST_FORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
 
@@ -31,6 +31,7 @@ public:
 
 private:
 	const std::string _target;
+	static bool _seeded;
 };
 
 #endif

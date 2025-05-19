@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:51:58 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 22:43:19 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:57:20 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Intern: could not create form";
+			return "Intern could not create the specified form";
 		}
 	};
 

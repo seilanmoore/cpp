@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:01 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/17 19:26:09 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:00:30 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main()
 		Bureaucrat paco("Paco", 151);
 		std::cout << paco << std::endl;
 	}
-	catch (const Bureaucrat::BureaucratException &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "[Exception] " << e.what() << std::endl;
 	}
 
 	std::cout << "\n";
@@ -36,9 +36,9 @@ int main()
 		Bureaucrat paco("Paco", 0);
 		std::cout << paco << std::endl;
 	}
-	catch (const Bureaucrat::BureaucratException &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "[Exception] " << e.what() << std::endl;
 	}
 
 	std::cout << "\n";
@@ -58,9 +58,9 @@ int main()
 		paco.incrementGrade();
 		std::cout << paco << std::endl;
 	}
-	catch (const Bureaucrat::BureaucratException &e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "[Exception] " << e.what() << std::endl;
 	}
 
 	{
@@ -88,9 +88,9 @@ int main()
 			delete paco;
 			paco = NULL;
 		}
-		catch (const Bureaucrat::BureaucratException &e)
+		catch (const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "[Exception] " << e.what() << std::endl;
 		}
 
 		delete paco;

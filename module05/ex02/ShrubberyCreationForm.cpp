@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 21:22:04 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 16:19:55 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:41:59 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,24 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (!getSigned())
-		throw FormNotSignedException();
+		throw NotSignedException();
 	if (executor.getGrade() > getExecuteGrade())
 		throw GradeTooLowException();
 	std::ofstream outfile((_target + "_shrubbery").c_str(),
 						  std::ios::out | std::ios::app);
 	if (!outfile.is_open())
 		throw FileException();
-	outfile << "    /\\\n";
-	outfile << "   /  \\\n";
-	outfile << "  /    \\\n";
-	outfile << " /______\\\n";
-	outfile << "    ||\n";
+	outfile << "               ,@@@@@@@," << std::endl;
+	outfile << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+	outfile << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
+	outfile << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+	outfile << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+	outfile << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+	outfile << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+	outfile << "       |o|        | |         | |" << std::endl;
+	outfile << "       |.|        | |         | |" << std::endl;
+	outfile << "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
 	outfile.close();
+	std::cout << "Shrubbery created at "
+			  << this->_target << "_shrubbery" << std::endl;
 }

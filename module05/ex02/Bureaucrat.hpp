@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 12:55:48 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/17 22:36:17 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 22:36:21 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "AForm.hpp"
+class AForm;
 
 class Bureaucrat
 {
@@ -36,30 +36,21 @@ public:
 	void signForm(AForm &form) const;
 	void executeForm(AForm const &form) const;
 
-	class BureaucratException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Bureaucrat exception";
+			return "Bureaucrat grade is too high";
 		}
 	};
 
-	class GradeTooHighException : public BureaucratException
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "Bureaucrat: grade too high";
-		}
-	};
-
-	class GradeTooLowException : public BureaucratException
-	{
-	public:
-		virtual const char *what() const throw()
-		{
-			return "Bureaucrat: grade too low";
+			return "Bureaucrat grade is too low";
 		}
 	};
 

@@ -6,16 +6,15 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:51:51 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/18 22:44:16 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/19 23:58:36 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Intern.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-
-#include "Intern.hpp"
 
 Intern::Intern()
 {
