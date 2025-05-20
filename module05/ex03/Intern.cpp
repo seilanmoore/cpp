@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:51:51 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 23:58:36 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:25:32 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ AForm *Intern::makeForm(
 		}
 	}
 	throw InternCreateException();
+}
+
+const char *Intern::InternCreateException::what() const throw()
+{
+	return "Intern could not create the specified form";
 }
 
 AForm *Intern::_createRobotomyRequestForm(const std::string &target)

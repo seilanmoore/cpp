@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:45:17 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 22:33:47 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:23:21 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm() : _name("<name>"),
-			   _signed(false),
-			   _signGrade(1),
-			   _executeGrade(1)
+				 _signed(false),
+				 _signGrade(1),
+				 _executeGrade(1)
 {
 	std::cerr << "AForm default constructor called" << std::endl;
 }
@@ -84,6 +84,32 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() > _signGrade)
 		throw GradeTooLowException();
 	_signed = true;
+}
+
+const char *AForm::GradeTooHighException::what() const throw()
+{
+	return "Form grade is too high";
+}
+
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return "Form grade requirement not met or "
+		   "grade out of bounds (too low)";
+}
+
+const char *AForm::AlreadySignedException::what() const throw()
+{
+	return "Form is already signed";
+}
+
+const char *AForm::NotSignedException::what() const throw()
+{
+	return "Form is not signed";
+}
+
+const char *AForm::FileException::what() const throw()
+{
+	return "Form error handling file";
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &form)

@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:51:58 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 23:57:20 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:25:44 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ public:
 	class InternCreateException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Intern could not create the specified form";
-		}
+		virtual const char *what() const throw();
 	};
 
 	AForm *makeForm(

@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:44:41 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 22:11:05 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:17:25 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,19 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Form grade is too high";
-		}
+		virtual const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Form grade requirement not met or "
-				   "grade out of bounds (too low)";
-		}
+		virtual const char *what() const throw();
 	};
 
 	class AlreadySignedException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Form is already signed";
-		}
+		virtual const char *what() const throw();
 	};
 
 private:

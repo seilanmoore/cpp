@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 12:55:48 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/19 21:58:45 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:12:19 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,13 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Bureaucrat grade is too high";
-		}
+		virtual const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		virtual const char *what() const throw()
-		{
-			return "Bureaucrat grade is too low";
-		}
+		virtual const char *what() const throw();
 	};
 
 private:
