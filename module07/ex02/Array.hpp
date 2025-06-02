@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:56:33 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/06/02 10:03:31 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:16:47 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Array<T>::Array(const Array &other) : _content(0), _size(0)
 		try
 		{
 			for (unsigned int i = 0; i < other._size; ++i)
-			tmpContent[i] = other._content[i];
+				tmpContent[i] = other._content[i];
 		}
 		catch (const std::exception &e)
 		{

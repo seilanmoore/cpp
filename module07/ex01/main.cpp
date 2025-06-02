@@ -6,7 +6,7 @@
 /*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:49:14 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/28 22:55:00 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:15:47 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int main()
 	std::cout << "Array de enteros después de incrementElement: ";
 	iter(int_array, int_length, incrementElement<int>);
 	iter(int_array, int_length, printInteger);
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl
+			  << std::endl;
 
 	std::string string_array[] = {"apple", "banana", "cherry", "date"};
 	std::size_t string_length = sizeof(string_array) / sizeof(std::string);
