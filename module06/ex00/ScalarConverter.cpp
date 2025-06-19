@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smoore-a <smoore-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smoore-a <smoore-a@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:48:25 by smoore-a          #+#    #+#             */
-/*   Updated: 2025/05/23 07:09:43 by smoore-a         ###   ########.fr       */
+/*   Updated: 2025/06/19 20:54:06 by smoore-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>
+#include <sstream>
 #include <cerrno>
 #include <cmath>
 #include <limits>
@@ -184,6 +184,11 @@ bool ScalarConverter::isPseudoLiteral(const std::string &literal)
 		convertFromFloat(std::numeric_limits<float>::quiet_NaN());
 		return true;
 	}
+	if (literal == "inff")
+	{
+		convertFromFloat(std::numeric_limits<float>::infinity());
+		return true;
+	}
 	if (literal == "+inff")
 	{
 		convertFromFloat(std::numeric_limits<float>::infinity());
@@ -197,6 +202,11 @@ bool ScalarConverter::isPseudoLiteral(const std::string &literal)
 	if (literal == "nan")
 	{
 		convertFromDouble(std::numeric_limits<double>::quiet_NaN());
+		return true;
+	}
+	if (literal == "inf")
+	{
+		convertFromDouble(std::numeric_limits<double>::infinity());
 		return true;
 	}
 	if (literal == "+inf")
@@ -214,9 +224,9 @@ bool ScalarConverter::isPseudoLiteral(const std::string &literal)
 
 bool ScalarConverter::isString(const std::string &literal)
 {
-	char *doubleEndPtr;
-	std::strtod(literal.c_str(), &doubleEndPtr);
-	if (doubleEndPtr == literal.c_str())
+	std::stringstream ss(literal);
+	long double value;
+	if (!(ss >> value))
 	{
 		printAllImpossible();
 		return true;
@@ -226,9 +236,9 @@ bool ScalarConverter::isString(const std::string &literal)
 
 bool ScalarConverter::isFloat(const std::string &literal)
 {
-	char *doubleEndPtr;
-	double doubleValue = std::strtod(literal.c_str(), &doubleEndPtr);
-	if (*doubleEndPtr == 'f' && *(doubleEndPtr + 1) == '\0')
+	std::stringstream ss(literal);
+	double doubleValue;
+	if (literal[literal.length() - 1] == 'f' && ss >> doubleValue)
 	{
 		convertFromFloat(static_cast<float>(doubleValue));
 		return true;
@@ -243,10 +253,9 @@ bool ScalarConverter::isInt(const std::string &literal)
 		if (literal[i] == '.' || literal[i] == 'e' || literal[i] == 'E')
 			return false;
 	}
-	char *longEndPtr;
-	long longValue = std::strtol(literal.c_str(), &longEndPtr, 10);
-	if (*longEndPtr == '\0' &&
-		longValue >= static_cast<long>(std::numeric_limits<int>::min()) &&
+	std::stringstream ss(literal);
+	long longValue;
+	if (ss >> longValue && longValue >= static_cast<long>(std::numeric_limits<int>::min()) &&
 		longValue <= static_cast<long>(std::numeric_limits<int>::max()))
 	{
 		convertFromInt(static_cast<int>(longValue));
@@ -257,11 +266,11 @@ bool ScalarConverter::isInt(const std::string &literal)
 
 bool ScalarConverter::isDouble(const std::string &literal)
 {
-	char *doubleEndPtr;
-	double doubleValue = std::strtod(literal.c_str(), &doubleEndPtr);
-	if (*doubleEndPtr == '\0')
+	std::stringstream ss(literal);
+	long double value;
+	if (ss >> value)
 	{
-		convertFromDouble(doubleValue);
+		convertFromDouble(static_cast<double>(value));
 		return true;
 	}
 	return false;
