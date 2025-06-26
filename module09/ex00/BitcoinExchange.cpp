@@ -94,7 +94,7 @@ bool BitcoinExchange::checkInputFormat(const std::string &date, const std::strin
 		return false;
 	}
 	std::istringstream iss(strValue);
-	if (!(iss >> iData.value))
+	if (!(iss >> iData.value) || iData.value == 0e0)
 	{
 		std::cerr << "Error: bad value: " << strValue << " => "
 				  << date << std::endl;
@@ -118,7 +118,7 @@ void BitcoinExchange::checkInputValue()
 	double value = iData.value;
 	char fmtDate[11];
 	strftime(fmtDate, 11, "%Y-%m-%d", &(iData.tm));
-	if (value < 0.0)
+	if (value < 0e0)
 	{
 		std::cerr << "Error: not a positive value: " << formatValue(value)
 				  << " => " << fmtDate << std::endl;

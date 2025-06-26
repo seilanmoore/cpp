@@ -1,3 +1,6 @@
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
+
 #include <string>
 #include <ctime>
 #include <map>
@@ -34,3 +37,5 @@ private:
 	void checkInputValue();
 	double exchangeValue() const;
 };
+
+#endif
