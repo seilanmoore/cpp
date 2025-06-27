@@ -66,7 +66,7 @@ bool RPN::isOperand(const std::string &token)
 	if (!(iss >> operand))
 		return false;
 	if (token.find('.') != std::string::npos ||
-		operand < 0 || operand > 9)
+		operand < -9 || operand > 9)
 		throw BadExpressionException();
 	_stack.push(operand);
 	return true;
