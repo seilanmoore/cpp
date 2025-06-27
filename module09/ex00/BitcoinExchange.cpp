@@ -81,9 +81,28 @@ bool BitcoinExchange::openInput(std::ifstream &ifs, const std::string &input) co
 	return true;
 }
 
+static std::string trim(const std::string &str)
+{
+	size_t first = str.find_first_not_of(" \t\n\r\f\v");
+	if (first == std::string::npos)
+		return "";
+	size_t last = str.find_last_not_of(" \t\n\r\f\v");
+	return str.substr(first, last - first + 1);
+}
+
 bool BitcoinExchange::checkInputFormat(const std::string &date, const std::string &strValue)
 {
 	if (strptime((date).c_str(), "%Y-%m-%d", &(iData.tm)) == NULL)
+	{
+		std::cerr << "Error: bad date: " << date << std::endl;
+		return false;
+	}
+	time_t tmp = mktime(&iData.tm);
+	char checkDate[11];
+	tm *tm = localtime(&tmp);
+	strftime(checkDate, 11, "%Y-%m-%d", tm);
+	std::string strDate(checkDate);
+	if (strDate != trim(date))
 	{
 		std::cerr << "Error: bad date: " << date << std::endl;
 		return false;

@@ -8,26 +8,28 @@ date | value
 2001-42-42
 2012-01-11 | 1
 2012-01-11 | 2147483648
-2012-02-29 | 10         // Año bisiesto válido
-2020-13-01 | 7          // Mes inválido
-2020-00-10 | 8          // Mes inválido
-2020-12-32 | 9          // Día inválido
-2020-12-00 | 10         // Día inválido
-2020-12-15 |            // Valor vacío
-2020-12-15 | abc        // Valor no numérico
+2012-02-29 | 10
+2020-13-01 | 7
+2020-00-10 | 8
+2020-12-32 | 9
+2020-12-00 | 10
+2025-02-29 | 1
+2024-02-29 | 1
+2020-12-15 |
+2020-12-15 | abc
 2020-12-15 | 0
 2020-12-15 | -100
-2020-12-15 | 9999999999 // Valor muy grande
-2020-12-15 | 1.234e2    // Notación científica
-2020-12-15 | +5         // Valor positivo con signo
-2020-12-15 | -0.5       // Valor negativo decimal
-2020-12-15 | 1,5        // Valor con coma decimal (formato europeo)
-2020-12-15              // Falta el separador y valor
-| 5                     // Falta la fecha
-2020-12-15 | 5 | extra  // Línea con campo extra
-2020-12-15|5            // Sin espacios
+2020-12-15 | 9999999999
+2020-12-15 | 1.234e2
+2020-12-15 | +5
+2020-12-15 | -0.5
+2020-12-15 | 1,5
+2020-12-15
+| 5
+2020-12-15 | 5 | extra
+2020-12-15|5
 2020-12-15 | 5.0
-2020-12-15 | 0005       // Valor con ceros a la izquierda
-2020-12-15 | .5         // Valor decimal sin cero inicial
-2020-12-15 | 5.         // Valor decimal sin decimales
-2020-12-15 | 1e309      // Valor fuera de rango double
+2020-12-15 | 0005
+2020-12-15 | .5
+2020-12-15 | 5.
+2020-12-15 | 1e309
