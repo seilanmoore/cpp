@@ -20,6 +20,8 @@ public:
 
 	void calculateExpression();
 	void evaluateToken(const std::string &token);
+	bool isOperand(const std::string &token);
+	bool isOperator(const std::string &token);
 	std::pair<int, int> popOperands();
 
 	class BadExpressionException : public std::exception
@@ -36,8 +38,8 @@ public:
 
 private:
 	std::string _expr;
-	std::stack<int, std::deque<int> > _stack;
 	int _result;
+	std::stack<int, std::deque<int> > _stack;
 };
 
 std::ostream &operator<<(std::ostream &os, const RPN &obj);

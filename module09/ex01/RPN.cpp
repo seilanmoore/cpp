@@ -5,24 +5,26 @@
 #include <sstream>
 #include <utility>
 
-RPN::RPN() : _expr(""), _stack(), _result(0)
+RPN::RPN() : _expr(""), _result(0), _stack()
 {
 }
 
-RPN::RPN(const char *expr) : _expr(expr), _stack(), _result(0)
+RPN::RPN(const char *expr) : _expr(expr), _result(0), _stack()
 {
 	calculateExpression();
 }
 
-RPN::RPN(const RPN &other) : _expr(other._expr), _stack(), _result(other._result)
+RPN::RPN(const RPN &other) : _expr(other._expr), _result(other._result), _stack()
 {
 }
 
 RPN &RPN::operator=(const RPN &other)
 {
+	if (this == &other)
+		return *this;
 	_expr = other._expr;
-	_stack = std::stack<int, std::deque<int> >();
 	_result = other._result;
+	_stack = std::stack<int, std::deque<int> >();
 	return *this;
 }
 
@@ -32,24 +34,20 @@ RPN::~RPN()
 
 void RPN::calculateExpression()
 {
-	size_t end = 0;
-	size_t begin = 0;
 	std::string token;
-	size_t nToken = 0;
-	if (_expr.empty() || _expr.find_first_not_of("+-*/ ") == std::string::npos)
+	size_t begin = 0;
+	size_t end = 0;
+	if (_expr.empty())
 		throw BadExpressionException();
 	while ((begin = _expr.find_first_not_of(' ', begin)) != std::string::npos)
 	{
 		end = _expr.find(' ', begin);
 		token = _expr.substr(begin, end - begin);
-		// std::cout << "\'" << token << "\'" << std::endl;
 		if (!token.empty())
 			evaluateToken(token);
 		begin = end;
-		++nToken;
 	}
-	if (_stack.empty() ||
-		(nToken != 1 && token.find_first_not_of("+-*/") != std::string::npos))
+	if (_stack.size() != 1)
 		throw BadExpressionException();
 	_result = _stack.top();
 	_stack = std::stack<int, std::deque<int> >();
@@ -57,52 +55,62 @@ void RPN::calculateExpression()
 
 void RPN::evaluateToken(const std::string &token)
 {
-	std::pair<int, int> operands;
-	if (token.find_first_of("+-*/") != std::string::npos && _stack.size() == 1)
+	if (!isOperand(token) && !(_stack.size() > 1 && isOperator(token)))
 		throw BadExpressionException();
+}
+
+bool RPN::isOperand(const std::string &token)
+{
+	std::istringstream iss(token);
+	int operand;
+	if (!(iss >> operand))
+		return false;
+	if (token.find('.') != std::string::npos ||
+		operand < 0 || operand > 9)
+		throw BadExpressionException();
+	_stack.push(operand);
+	return true;
+}
+
+bool RPN::isOperator(const std::string &token)
+{
+	std::pair<int, int> operands;
 	if (token == "+")
 	{
 		operands = popOperands();
 		_stack.push(operands.first + operands.second);
+		return true;
 	}
-	else if (token == "-")
+	if (token == "-")
 	{
 		operands = popOperands();
 		_stack.push(operands.first - operands.second);
+		return true;
 	}
-	else if (token == "*")
+	if (token == "*")
 	{
 		operands = popOperands();
 		_stack.push(operands.first * operands.second);
+		return true;
 	}
-	else if (token == "/")
+	if (token == "/")
 	{
 		operands = popOperands();
 		if (operands.second == 0)
 			throw DivisionByZeroException();
 		_stack.push(operands.first / operands.second);
+		return true;
 	}
-	else
-	{
-		std::istringstream iss(token);
-		int operand;
-		if (token.find('.') != std::string::npos || !(iss >> operand) ||
-			operand < 0 || operand > 9)
-			throw BadExpressionException();
-		_stack.push(operand);
-	}
+	return false;
 }
 
 std::pair<int, int> RPN::popOperands()
 {
 	std::pair<int, int> result;
-	if (!_stack.empty())
-	{
-		result.second = _stack.top();
-		_stack.pop();
-		result.first = _stack.top();
-		_stack.pop();
-	}
+	result.second = _stack.top();
+	_stack.pop();
+	result.first = _stack.top();
+	_stack.pop();
 	return result;
 }
 
