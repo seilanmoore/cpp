@@ -58,41 +58,6 @@ PmergeMe::~PmergeMe()
 {
 }
 
-// void PmergeMe::MIS(std::vector<int> &arr)
-// {
-// 	size_t n = arr.size();
-// 	if (n <= 1)
-// 		return;
-// 	std::vector<int> greaterElements;
-// 	std::vector<std::pair<int, int> > pairs;
-// 	for (size_t i = 0; i + 1 < n; i += 2)
-// 	{
-// 		int a = arr[i];
-// 		int b = arr[i + 1];
-// 		if (a > b)
-// 		{
-// 			greaterElements.push_back(a);
-// 			pairs.push_back(std::make_pair(a, b));
-// 		}
-// 		else
-// 		{
-// 			greaterElements.push_back(b);
-// 			pairs.push_back(std::make_pair(b, a));
-// 		}
-// 	}
-// 	if (n % 2)
-// 		greaterElements.push_back(arr.back());
-// 	MIS(greaterElements);
-// 	for (size_t i = 0; i < pairs.size(); ++i)
-// 	{
-// 		int target = pairs[i].second;
-// 		std::vector<int>::iterator it =
-// 			std::lower_bound(greaterElements.begin(), greaterElements.end(), target);
-// 		greaterElements.insert(it, target);
-// 	}
-// 	arr = greaterElements;
-// }
-
 void PmergeMe::MIS(std::vector<int> &arr)
 {
 	size_t n = arr.size();
