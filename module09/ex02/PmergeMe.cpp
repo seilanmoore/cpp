@@ -58,39 +58,75 @@ PmergeMe::~PmergeMe()
 {
 }
 
+// void PmergeMe::MIS(std::vector<int> &arr)
+// {
+// 	size_t n = arr.size();
+// 	if (n <= 1)
+// 		return;
+// 	std::vector<int> greaterElements;
+// 	std::vector<std::pair<int, int> > pairs;
+// 	for (size_t i = 0; i + 1 < n; i += 2)
+// 	{
+// 		int a = arr[i];
+// 		int b = arr[i + 1];
+// 		if (a > b)
+// 		{
+// 			greaterElements.push_back(a);
+// 			pairs.push_back(std::make_pair(a, b));
+// 		}
+// 		else
+// 		{
+// 			greaterElements.push_back(b);
+// 			pairs.push_back(std::make_pair(b, a));
+// 		}
+// 	}
+// 	if (n % 2)
+// 		greaterElements.push_back(arr.back());
+// 	MIS(greaterElements);
+// 	for (size_t i = 0; i < pairs.size(); ++i)
+// 	{
+// 		int target = pairs[i].second;
+// 		std::vector<int>::iterator it =
+// 			std::lower_bound(greaterElements.begin(), greaterElements.end(), target);
+// 		greaterElements.insert(it, target);
+// 	}
+// 	arr = greaterElements;
+// }
+
 void PmergeMe::MIS(std::vector<int> &arr)
 {
 	size_t n = arr.size();
 	if (n <= 1)
 		return;
-	std::vector<int> greaterElements;
-	std::vector<std::pair<int, int> > pairs;
+	std::vector<int> largeNum;
+	std::vector<int> smallNum;
 	for (size_t i = 0; i + 1 < n; i += 2)
 	{
 		int a = arr[i];
 		int b = arr[i + 1];
 		if (a > b)
 		{
-			greaterElements.push_back(a);
-			pairs.push_back(std::make_pair(a, b));
+			largeNum.push_back(a);
+			smallNum.push_back(b);
 		}
 		else
 		{
-			greaterElements.push_back(b);
-			pairs.push_back(std::make_pair(b, a));
+			largeNum.push_back(b);
+			smallNum.push_back(a);
 		}
 	}
 	if (n % 2)
-		greaterElements.push_back(arr.back());
-	MIS(greaterElements);
-	for (size_t i = 0; i < pairs.size(); ++i)
+		largeNum.push_back(arr.back());
+	MIS(largeNum);
+	for (size_t i = 0; i < smallNum.size(); ++i)
 	{
-		int target = pairs[i].second;
+		int target = smallNum[i];
 		std::vector<int>::iterator it =
-			std::lower_bound(greaterElements.begin(), greaterElements.end(), target);
-		greaterElements.insert(it, target);
+			std::lower_bound(
+				largeNum.begin(), largeNum.end(), target);
+		largeNum.insert(it, target);
 	}
-	arr = greaterElements;
+	arr = largeNum;
 }
 
 void PmergeMe::MIS(std::list<int> &arr)
@@ -98,8 +134,8 @@ void PmergeMe::MIS(std::list<int> &arr)
 	size_t n = arr.size();
 	if (n <= 1)
 		return;
-	std::list<int> greaterElements;
-	std::list<std::pair<int, int> > pairs;
+	std::list<int> largeNum;
+	std::list<int> smallNum;
 	std::list<int>::const_iterator it;
 	for (it = arr.begin(); it != arr.end(); std::advance(it, 2))
 	{
@@ -110,22 +146,22 @@ void PmergeMe::MIS(std::list<int> &arr)
 		int b = *tmp;
 		if (a > b)
 		{
-			greaterElements.push_back(a);
-			pairs.push_back(std::make_pair(a, b));
+			largeNum.push_back(a);
+			smallNum.push_back(b);
 		}
 		else
 		{
-			greaterElements.push_back(b);
-			pairs.push_back(std::make_pair(b, a));
+			largeNum.push_back(b);
+			smallNum.push_back(a);
 		}
 	}
 	if (n % 2)
-		greaterElements.push_back(arr.back());
-	MIS(greaterElements);
-	std::list<std::pair<int, int> >::const_iterator pairsIt;
-	for (pairsIt = pairs.begin(); pairsIt != pairs.end(); ++pairsIt)
-		binaryInsert(greaterElements, (*pairsIt).second);
-	arr = greaterElements;
+		largeNum.push_back(arr.back());
+	MIS(largeNum);
+	std::list<int>::const_iterator smallIt = smallNum.begin();
+	for (; smallIt != smallNum.end(); ++smallIt)
+		binaryInsert(largeNum, *smallIt);
+	arr = largeNum;
 }
 
 void PmergeMe::binaryInsert(std::list<int> &sorted, int target)
