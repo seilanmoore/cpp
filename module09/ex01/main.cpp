@@ -10,7 +10,6 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 		return (std::cerr << "Usage: ./rpn \"reverse polish mathematical expr\"\n", 1);
-	std::istringstream arg(argv[1]);
 	try
 	{
 		RPN rpn(argv[1]);
