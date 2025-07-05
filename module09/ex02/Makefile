@@ -1,12 +1,12 @@
 # Compiler and flags
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-Ofast #-g
 
 # Program name
 NAME = PmergeMe
 
 # Source files
-SRC = main.cpp PmergeMe.cpp
+SRC = main.cpp PmergeMe.cpp mergeInsertionSort.cpp exceptions.cpp
 
 # Object files
 OBJ = $(SRC:.cpp=.o)

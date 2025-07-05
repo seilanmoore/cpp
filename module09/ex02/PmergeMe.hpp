@@ -1,84 +1,54 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include <string>
+#include "mergeInsertionSort.hpp"
+#include "exceptions.hpp"
+#include "utils.hpp"
+
+#include <iostream>
 #include <vector>
 #include <list>
+
+#define USAGE "Usage: ./PmergeMe [Number]... or \"[Number]...\"\n"
 
 class PmergeMe
 {
 public:
 	PmergeMe();
-	PmergeMe(const char *number);
-	PmergeMe(const char **number);
+	PmergeMe(const char *sequence);
+	PmergeMe(const char **sequence);
 	PmergeMe(const PmergeMe &other);
 	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
+
+	static size_t nComparisons;
+	static size_t staticPairSize;
 
 private:
 	std::vector<int> _vector;
 	std::list<int> _list;
 
-	void MIS(std::vector<int> &arr);
-	void MIS(std::list<int> &arr);
-	void binaryInsert(std::list<int> &sorted, int target);
 	void processAndDisplayInfo();
 	void validateSequence() const;
-	double getSortingTime(std::vector<int> arr);
-	double getSortingTime(std::list<int> arr);
-	bool isSorted(const std::vector<int> &arr);
-	bool isSorted(const std::list<int> &arr);
-	void printVector(const std::vector<int> &v);
-	void printList(const std::list<int> &l);
 	void parseNumber(const std::string &number);
 
-	class BadNumberException : public std::exception
-	{
-	public:
-		BadNumberException(const std::string &msg);
-		virtual ~BadNumberException() throw();
+	template <typename T>
+	double getSortingTime(T arr);
 
-		const char *what() const throw();
-
-	private:
-		std::string _msg;
-	};
-
-	class DuplicateException : public std::exception
-	{
-	public:
-		DuplicateException(int number);
-		virtual ~DuplicateException() throw();
-
-		const char *what() const throw();
-
-	private:
-		std::string _msg;
-	};
-
-	class EmptyException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
-
-	class FewNumbersException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
-
-	class AlreadySortedException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
-
-	class SortingException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
+	static void resetStatic();
 };
+
+template <typename T>
+double PmergeMe::getSortingTime(T arr)
+{
+	clock_t start = clock();
+	mergeInsertionSort(arr);
+	clock_t end = clock();
+	// std::cout << "nComparisons: " << PmergeMe::nComparisons << std::endl;
+	PmergeMe::resetStatic();
+	if (!isSorted<T>(arr))
+		throw SortingException();
+	return (static_cast<double>(end - start) / CLOCKS_PER_SEC) * 1e6;
+}
 
 #endif
